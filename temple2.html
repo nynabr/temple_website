@@ -1,515 +1,383 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bhuvarahanatha Temple</title>
-
+    <title>Sri Bhoo Varahanatha Swamy Temple | Kallahalli</title>
+    
+    <!-- Google Fonts for a Regal Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+        :root {
+            --temple-red: #7D0A0A;
+            --sacred-gold: #C5A02B;
+            --stone: #2D2926;
+            --parchment: #FCF8F1;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
 
-      body {
-        font-family: Arial, sans-serif;
-        background: #fffaf3;
-        color: #333;
-      }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
-      /* Navbar */
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--parchment);
+            color: var(--stone);
+            line-height: 1.8;
+        }
 
-      nav {
-        background: #ff9933;
-        padding: 15px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
+        /* --- Navigation --- */
+        nav {
+            background: var(--white);
+            padding: 12px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 3px solid var(--sacred-gold);
+        }
 
-      .nav-logo img {
-        width: 220px;
-      }
+        .nav-logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .nav-logo img { height: 60px; }
+        .nav-logo span { 
+            font-family: 'Cinzel', serif; 
+            color: var(--temple-red); 
+            font-weight: 700; 
+            font-size: 1.1rem;
+            line-height: 1.1;
+        }
 
-      .nav-right {
-        display: flex;
-        gap: 25px;
-      }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--stone);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--temple-red); }
 
-      .nav-right a {
-        text-decoration: none;
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        transition: 0.3s;
-      }
+        /* --- Hero Section --- */
+        #home {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1600') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
 
-      .nav-right a:hover {
-        color: black;
-      }
+        .hero-title {
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+            padding: 40px 60px;
+            border: 1px solid var(--sacred-gold);
+        }
+        .hero-title h1 { font-family: 'Cinzel', serif; font-size: 3.5rem; margin-bottom: 10px; letter-spacing: 3px; }
+        .hero-title p { font-size: 1.4rem; font-style: italic; opacity: 0.9; }
 
-      /* Hero Section */
+        /* --- Section Styling --- */
+        section { padding: 90px 10%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Cinzel', serif; color: var(--temple-red); font-size: 2.5rem; }
+        .divider { width: 100px; height: 3px; background: var(--sacred-gold); margin: 15px auto; position: relative; }
+        .divider::after { content: "❃"; position: absolute; top: -11px; left: 40px; background: var(--parchment); padding: 0 5px; color: var(--sacred-gold); }
 
-      header {
-        background: url("https://images.unsplash.com/photo-1514222134-b57cbb8ce073?q=80&w=1200")
-          no-repeat center/cover;
-        height: 500px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-      }
+        /* --- About Us --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-text h3 { font-family: 'Cinzel'; color: var(--sacred-gold); margin-bottom: 20px; font-size: 1.8rem; }
+        .about-img img { width: 100%; border-radius: 4px; box-shadow: 20px 20px 0px var(--sacred-gold); }
 
-      .hero-content {
-        background: rgba(0, 0, 0, 0.5);
-        padding: 40px;
-        border-radius: 10px;
-      }
+        /* --- Seva (Services) --- */
+        #seva { background-color: #f7eee2; }
+        .seva-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .seva-card {
+            background: var(--white);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 5px solid var(--temple-red);
+            transition: 0.4s;
+        }
+        .seva-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+        .seva-card h4 { font-family: 'Cinzel', serif; color: var(--temple-red); margin-bottom: 15px; }
+        .price-tag { color: var(--sacred-gold); font-weight: bold; font-size: 1.1rem; display: block; margin-top: 15px; }
 
-      .hero-content h1 {
-        font-size: 50px;
-        margin-bottom: 15px;
-      }
+        /* --- History (Sthala Purana) --- */
+        .history-content { max-width: 800px; margin: 0 auto; line-height: 2; text-align: justify; }
 
-      .hero-content p {
-        font-size: 22px;
-        margin-bottom: 20px;
-      }
+        /* --- Gallery --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border: 5px solid white; transition: 0.3s; }
+        .gallery-grid img:hover { transform: scale(1.03); border-color: var(--sacred-gold); }
 
-      .hero-content button {
-        padding: 12px 25px;
-        border: none;
-        background: #ff9933;
-        color: white;
-        font-size: 18px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
+        /* --- Events --- */
+        .event-card {
+            background: white;
+            display: flex;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+        .event-date { background: var(--temple-red); color: white; padding: 25px; text-align: center; min-width: 130px; }
+        .event-info { padding: 25px; }
 
-      .hero-content button:hover {
-        background: #e65c00;
-      }
+        /* --- Donations --- */
+        #donations { background: var(--stone); color: var(--parchment); text-align: center; }
+        .donation-info { 
+            background: rgba(255,255,255,0.05); 
+            padding: 50px; 
+            border: 2px dashed var(--sacred-gold); 
+            display: inline-block;
+            margin-top: 30px;
+        }
+        .donation-info h4 { color: var(--sacred-gold); margin-bottom: 20px; font-family: 'Cinzel'; }
 
-      /* Announcement */
+        /* --- Contact --- */
+        .contact-flex { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; }
+        .form-box { background: white; padding: 40px; box-shadow: var(--shadow); }
+        .form-group { margin-bottom: 20px; }
+        input, textarea { width: 100%; padding: 15px; border: 1px solid #ddd; font-family: inherit; }
+        .btn-submit { 
+            background: var(--temple-red); color: white; border: none; 
+            padding: 15px 40px; font-family: 'Cinzel'; font-weight: bold; 
+            cursor: pointer; width: 100%; transition: 0.3s;
+        }
+        .btn-submit:hover { background: var(--sacred-gold); }
+        .error-txt { color: var(--temple-red); font-size: 12px; display: none; margin-top: 5px; }
 
-      .announcement {
-        background: darkred;
-        color: white;
-        text-align: center;
-        padding: 12px;
-        font-size: 18px;
-        font-weight: bold;
-      }
+        /* --- Footer --- */
+        footer { background: #111; color: #888; padding: 60px 10% 20px; text-align: center; }
+        footer h3 { color: var(--sacred-gold); font-family: 'Cinzel'; margin-bottom: 10px; }
 
-      /* Common Section */
-
-      section {
-        padding: 60px 50px;
-      }
-
-      h2 {
-        text-align: center;
-        color: #ff6600;
-        margin-bottom: 40px;
-        font-size: 35px;
-      }
-
-      /* About */
-
-      .about-container {
-        display: flex;
-        gap: 40px;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-
-      .about-container img {
-        width: 450px;
-        border-radius: 12px;
-      }
-
-      .about-text {
-        flex: 1;
-        line-height: 1.8;
-        font-size: 18px;
-      }
-
-      /* Darshan */
-
-      .timing-container {
-        display: flex;
-        gap: 30px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .timing-card {
-        background: white;
-        padding: 30px;
-        width: 280px;
-        text-align: center;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      }
-
-      .timing-card h3 {
-        margin-bottom: 15px;
-        color: #ff6600;
-      }
-
-      /* Events */
-
-      .events-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-      }
-
-      .event-card {
-        background: #fff3e0;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transition: 0.3s;
-      }
-
-      .event-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .event-card h3 {
-        color: #d35400;
-        margin-bottom: 10px;
-      }
-
-      /* Services */
-
-      .services {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-      }
-
-      .service-box {
-        background: white;
-        padding: 25px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .service-box h3 {
-        color: #ff6600;
-        margin-bottom: 15px;
-      }
-
-      /* Gallery */
-
-      .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-      }
-
-      .gallery img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        border-radius: 10px;
-        transition: 0.3s;
-      }
-
-      .gallery img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 10px gray;
-      }
-
-      /* Quote */
-
-      .quote {
-        background: #ffedd5;
-        text-align: center;
-        padding: 60px 20px;
-        font-size: 30px;
-        font-style: italic;
-        color: #b03a2e;
-      }
-
-      /* Contact */
-
-      .contact-info {
-        text-align: center;
-        margin-bottom: 30px;
-        line-height: 2;
-        font-size: 18px;
-      }
-
-      form {
-        max-width: 600px;
-        margin: auto;
-      }
-
-      form input,
-      form textarea {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
-      button {
-        background: #ff9933;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-
-      button:hover {
-        background: #e65c00;
-      }
-
-      /* Footer */
-
-      footer {
-        background: #333;
-        color: white;
-        text-align: center;
-        padding: 25px;
-        margin-top: 30px;
-        line-height: 1.8;
-      }
+        @media (max-width: 850px) {
+            .about-grid, .contact-flex { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hero-title h1 { font-size: 2.2rem; }
+        }
     </style>
-  </head>
+</head>
+<body>
 
-  <body>
-    <!-- Navbar -->
-
+    <!-- Nav -->
     <nav>
-      <div class="nav-logo">
-        <img
-          src="http://bhoovarahatemple.com/images/logo.png"
-          alt="Temple Logo"
-        />
-      </div>
-
-      <div class="nav-right">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#darshan">Darshan</a>
-        <a href="#events">Events</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-      </div>
+        <a href="#home" class="nav-logo">
+            <img src="http://bhoovarahatemple.com/images/logo.png" alt="Temple Logo">
+            <span>SRI BHOO<br>VARAHANATHA</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#seva">Seva</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#donations">Donations</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <!-- Hero Section -->
-
-    <header id="home">
-      <div class="hero-content">
-        <h1>Welcome to Bhuvarahanatha Temple</h1>
-
-        <p>Experience Peace, Devotion & Divine Blessings</p>
-
-        <button>Explore Temple</button>
-      </div>
-    </header>
-
-    <!-- Announcement -->
-
-    <div class="announcement">
-      🔔 Grand Rathotsava Festival Celebration on July 10
-    </div>
+    <!-- Hero -->
+    <section id="home">
+        <div class="hero-title">
+            <p>On the Banks of River Hemavathi</p>
+            <h1>Divine Sanctuary</h1>
+            <p>॥ ॐ नमो भगवते वराहरೂಪಾಯ ॥</p>
+        </div>
+    </section>
 
     <!-- About -->
-
     <section id="about">
-      <h2>🛕 About Temple</h2>
-
-      <div class="about-container">
-        <img
-          src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?q=80&w=1200"
-        />
-
-        <div class="about-text">
-          <p>
-            Bhuvarahanatha Temple is a sacred spiritual destination known for
-            its peaceful atmosphere, divine traditions, and beautiful temple
-            architecture.
-          </p>
-
-          <br />
-
-          <p>
-            Thousands of devotees visit the temple every year seeking blessings,
-            positivity, and spiritual peace.
-          </p>
+        <div class="section-header">
+            <h2>About The Temple</h2>
+            <div class="divider"></div>
         </div>
-      </div>
+        <div class="about-grid">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?q=80&w=800" alt="Temple Architecture">
+            </div>
+            <div class="about-text">
+                <h3>Sacred Presence in Kallahalli</h3>
+                <p>The Sri Bhoo Varahanatha Swamy Temple is a 2,500-year-old mythological shrine. It is uniquely famous for its 14-foot tall monolithic <b>Krishnashila</b> idol of Lord Varaha, who sits with Goddess Bhoo Devi on his lap.</p>
+                <p>This "Shanta Murthy" form of the Lord attracts thousands of devotees seeking peace, prosperity, and blessings for land and housing. The temple is a prominent center of the <b>Mysore Parakala Mutt</b>.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- Darshan -->
-
-    <section id="darshan">
-      <h2>⏰ Darshan Timings</h2>
-
-      <div class="timing-container">
-        <div class="timing-card">
-          <h3>🌅 Morning Darshan</h3>
-          <p>6:00 AM – 12:00 PM</p>
+    <!-- Seva -->
+    <section id="seva">
+        <div class="section-header">
+            <h2>Daily Sevas</h2>
+            <div class="divider"></div>
         </div>
-
-        <div class="timing-card">
-          <h3>🌙 Evening Darshan</h3>
-          <p>4:00 PM – 9:00 PM</p>
+        <div class="seva-grid">
+            <div class="seva-card">
+                <h4>Nitya Abhisheka</h4>
+                <p>Sacred holy bath performed with milk, honey, and herbs.</p>
+                <span class="price-tag">₹ 501 /-</span>
+            </div>
+            <div class="seva-card">
+                <h4>Sahasranama Archana</h4>
+                <p>Divine chanting of 1000 names for family welfare.</p>
+                <span class="price-tag">₹ 251 /-</span>
+            </div>
+            <div class="seva-card">
+                <h4>Kalyanotsava</h4>
+                <p>Celestial wedding of the Lord performed on special request.</p>
+                <span class="price-tag">₹ 5,001 /-</span>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Events -->
-
-    <section id="events">
-      <h2>🎉 Upcoming Events</h2>
-
-      <div class="events-container">
-        <div class="event-card">
-          <h3>🪔 Festival Celebration</h3>
-          <p>Date: May 15</p>
-          <p>Special poojas and cultural celebrations.</p>
+    <!-- History -->
+    <section id="history">
+        <div class="section-header">
+            <h2>Sthala Purana</h2>
+            <div class="divider"></div>
         </div>
-
-        <div class="event-card">
-          <h3>🙏 Maha Pooja</h3>
-          <p>Date: June 1</p>
-          <p>Devotional rituals and prasadam distribution.</p>
+        <div class="history-content">
+            <p>The history of this Kshethra dates back to the era of <b>Gautama Rishi</b>, who performed penance here. Legend says the idol remained buried for centuries until it was rediscovered during the era of local chieftains. Today, the temple stands as a guardian of the Hemavathi river valley, representing the third avatar of Lord Vishnu.</p>
+            <p>Every corner of the temple reflects Hoysala and Vijayanagara influences, though the main sanctum retains its ancient, primitive power that devotees feel the moment they enter.</p>
         </div>
-
-        <div class="event-card">
-          <h3>🚩 Rathotsava</h3>
-          <p>Date: July 10</p>
-          <p>Grand temple chariot festival celebration.</p>
-        </div>
-      </div>
     </section>
 
-    <!-- Services -->
-
-    <section id="services">
-      <h2>🙏 Temple Services</h2>
-
-      <div class="services">
-        <div class="service-box">
-          <h3>🪔 Daily Pooja</h3>
-          <p>Special poojas performed every morning.</p>
+    <!-- Donations -->
+    <section id="donations">
+        <div class="section-header">
+            <h2 style="color: var(--sacred-gold)">Kainkaryam (Donations)</h2>
+            <div class="divider"></div>
         </div>
-
-        <div class="service-box">
-          <h3>🍛 Annadanam</h3>
-          <p>Free prasadam and meals for devotees.</p>
+        <p>Support the Nitya Annadhana and Temple Maintenance.</p>
+        <div class="donation-info">
+            <h4>Bank Transfer Details</h4>
+            <p><b>Account Name:</b> Sri Bhoo Varahanatha Seva Trust</p>
+            <p><b>Bank:</b> SBI, K.R. Pet Branch</p>
+            <p><b>Account No:</b> 1234567890123</p>
+            <p><b>IFSC:</b> SBIN0001234</p>
         </div>
-
-        <div class="service-box">
-          <h3>🔔 Bhajans</h3>
-          <p>Devotional singing and spiritual programs.</p>
-        </div>
-      </div>
     </section>
 
     <!-- Gallery -->
-
     <section id="gallery">
-      <h2>🖼 Temple Gallery</h2>
-
-      <div class="gallery">
-        <img
-          src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?q=80&w=1200"
-        />
-
-        <img
-          src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200"
-        />
-
-        <img
-          src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1200"
-        />
-
-        <img
-          src="https://images.unsplash.com/photo-1578926375605-eaf7559b1458?q=80&w=1200"
-        />
-
-        <img
-          src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200"
-        />
-
-        <img
-          src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1200"
-        />
-      </div>
+        <div class="section-header">
+            <h2>Gallery</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=400">
+            <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=400">
+            <img src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?q=80&w=400">
+            <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=400">
+        </div>
     </section>
 
-    <!-- Quote -->
-
-    <div class="quote">"Faith brings peace to every soul"</div>
+    <!-- Events -->
+    <section id="events">
+        <div class="section-header">
+            <h2>Utsava & Events</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="event-card">
+            <div class="event-date"><h3>14</h3><p>MAY</p></div>
+            <div class="event-info">
+                <h4>Varaha Jayanthi</h4>
+                <p>The main festival of the temple with Maha Abhisheka and special Alankara.</p>
+            </div>
+        </div>
+        <div class="event-card">
+            <div class="event-date"><h3>10</h3><p>JUL</p></div>
+            <div class="event-info">
+                <h4>Rathotsava</h4>
+                <p>Annual Chariot festival on the banks of River Hemavathi.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact -->
-
     <section id="contact">
-      <h2>📞 Contact Us</h2>
-
-      <div class="contact-info">
-        <p>📍 Mysuru, Karnataka</p>
-
-        <p>📞 +91 9876543210</p>
-
-        <p>📧 bhuvarahanathatemple@gmail.com</p>
-      </div>
-
-      <form onsubmit="return validateForm();">
-        <input type="text" id="name" placeholder="Your Name" />
-
-        <input type="email" id="email" placeholder="Your Email" />
-
-        <textarea rows="5" id="message" placeholder="Message"></textarea>
-
-        <button type="submit">Send Message</button>
-      </form>
+        <div class="section-header">
+            <h2>Contact Us</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="contact-flex">
+            <div class="contact-details">
+                <h3>Temple Office</h3>
+                <br>
+                <p>📍 Kallahalli, Ganjigere Post, Mandya - 571426</p>
+                <p>📞 +91 94480 11535</p>
+                <p>📧 info@bhuvaraha.com</p>
+                <br>
+                <h3>Timings</h3>
+                <p>Morning: 9:30 AM - 1:30 PM</p>
+                <p>Evening: 3:30 PM - 7:00 PM</p>
+            </div>
+            <div class="form-box">
+                <form id="contactForm" onsubmit="return validateForm(event)">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Full Name">
+                        <span id="nameErr" class="error-txt">Please enter your name</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email Address">
+                        <span id="emailErr" class="error-txt">Please enter a valid email</span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
-
     <footer>
-      <h3>🛕 Bhuvarahanatha Temple</h3>
-
-      <p>Peace • Devotion • Blessings</p>
-
-      <p>© 2026 All Rights Reserved</p>
+        <h3>SRI BHOO VARAHANATHA SWAMY TEMPLE</h3>
+        <p>Managed by Mysore Parakala Mutt</p>
+        <div style="margin-top: 20px;">
+            <a href="#home" style="color:#fff; margin: 0 10px; font-size: 13px;">Home</a>
+            <a href="#about" style="color:#fff; margin: 0 10px; font-size: 13px;">About</a>
+            <a href="#donations" style="color:#fff; margin: 0 10px; font-size: 13px;">Donations</a>
+        </div>
+        <p style="font-size: 11px; margin-top: 30px;">© 2026 Kallahalli Temple Trust. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
-
     <script>
-      function validateForm() {
-        let name = document.getElementById("name").value;
+        function validateForm(e) {
+            e.preventDefault();
+            let valid = true;
+            
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
 
-        if (name === "") {
-          alert("Please enter your name");
+            if(name.value.trim() === "") {
+                document.getElementById('nameErr').style.display = "block";
+                valid = false;
+            } else {
+                document.getElementById('nameErr').style.display = "none";
+            }
 
-          return false;
+            if(!email.value.includes('@')) {
+                document.getElementById('emailErr').style.display = "block";
+                valid = false;
+            } else {
+                document.getElementById('emailErr').style.display = "none";
+            }
+
+            if(valid) {
+                alert("Thank you. Your message has been sent to the Temple Office.");
+                document.getElementById('contactForm').reset();
+            }
+            return false;
         }
-
-        alert("Form submitted successfully!");
-
-        return true;
-      }
     </script>
-  </body>
+</body>
 </html>
